@@ -1,0 +1,306 @@
+/*
+ * WiredBackground styling.
+ * This is intentionally plain CSS rather than Tailwind utilities — the panel
+ * shadows, glows, and monospace ASCII layout are bespoke and would be an
+ * unreadable wall of arbitrary-value classes otherwise.
+ */
+
+.wired-fullscreen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #08040a;
+  font-family: 'Courier New', 'Consolas', monospace;
+  z-index: -1; /* sits behind page content */
+}
+
+.wired-noise-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.wired-panels-host {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+  transition: transform 0.3s ease;
+}
+
+.panel {
+  position: absolute;
+  box-sizing: border-box;
+  background: rgba(8, 3, 8, 0.86);
+  border: 1px solid rgba(170, 40, 80, 0.5);
+  color: #a83860;
+  font-size: 10px;
+  line-height: 1.25;
+  padding: 10px 14px;
+  box-shadow: inset 0 0 30px rgba(110, 20, 50, 0.18), 0 0 12px rgba(150, 30, 70, 0.12);
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+  overflow: hidden;
+  white-space: pre;
+  z-index: 2;
+}
+.panel.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ascii-cluster {
+  font-size: 10px;
+  line-height: 1;
+  color: #983050;
+}
+.sysinfo {
+  font-size: 11px;
+  line-height: 1.5;
+}
+.sysinfo .k {
+  color: #c04070;
+}
+.sysinfo .v {
+  color: #b07888;
+}
+.charmatrix {
+  font-size: 10px;
+  line-height: 1.15;
+  color: #904860;
+  letter-spacing: 2px;
+}
+.quote {
+  color: #c89098;
+  font-style: italic;
+  font-size: 13px;
+  text-align: center;
+  padding: 4px 0;
+}
+.cursor-blink::after {
+  content: '▮';
+  color: #c04070;
+  animation: blink 1s step-end infinite;
+  margin-left: 2px;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.corner-tag {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  font-size: 10px;
+  color: rgba(192, 64, 112, 0.55);
+}
+
+/* --- IDE panel --- */
+.ide-tab-bar {
+  background: rgba(30, 8, 18, 0.7);
+  border-bottom: 1px solid rgba(170, 40, 80, 0.4);
+  padding: 5px 10px;
+  display: flex;
+  gap: 10px;
+  font-size: 11px;
+  margin: -10px -14px 10px -14px;
+}
+.ide-tab {
+  color: #784858;
+  padding: 2px 8px;
+}
+.ide-tab.active {
+  color: #d8a0a8;
+  background: rgba(170, 40, 80, 0.2);
+  border-bottom: 1px solid #c04070;
+}
+.ide-status {
+  margin: 10px -14px -10px -14px;
+  padding: 4px 12px;
+  background: rgba(30, 8, 18, 0.7);
+  border-top: 1px solid rgba(170, 40, 80, 0.4);
+  font-size: 11px;
+  color: #884058;
+  display: flex;
+  justify-content: space-between;
+}
+.ide-source {
+  color: #b07888;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre;
+}
+.c-kw {
+  color: #d04070;
+}
+.c-fn {
+  color: #d89098;
+}
+.c-str {
+  color: #a86878;
+}
+.c-cmt {
+  color: #604850;
+  font-style: italic;
+}
+.c-num {
+  color: #c06080;
+}
+.c-pp {
+  color: #b85068;
+}
+
+/* --- Copland sigil + labels --- */
+.copland-art {
+  font-size: 7px;
+  line-height: 0.95;
+  letter-spacing: 0;
+  color: #c04070;
+  text-align: center;
+  font-family: 'Courier New', monospace;
+  margin: 0;
+}
+.copland-label-main {
+  color: #d04070;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.copland-label-sub {
+  color: #884060;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-align: center;
+  margin-top: 4px;
+  font-style: italic;
+}
+
+/* --- persistent centered login panel --- */
+.login-panel {
+  z-index: 100 !important;
+  border: 1px solid rgba(208, 64, 112, 0.75) !important;
+  box-shadow: inset 0 0 40px rgba(140, 30, 70, 0.22), 0 0 24px rgba(208, 64, 112, 0.25),
+    0 0 60px rgba(150, 30, 65, 0.12) !important;
+}
+.login-divider {
+  border: none;
+  border-top: 1px dashed rgba(192, 64, 112, 0.4);
+  margin: 14px auto 12px;
+  width: 70%;
+}
+.boot-sequence {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #c89098;
+  text-align: left;
+  padding: 0 24px;
+  max-width: 380px;
+  margin: 0 auto;
+}
+.boot-line {
+  white-space: pre;
+}
+.boot-prompt {
+  color: #c04070;
+}
+.boot-key {
+  color: #d04070;
+}
+.boot-value {
+  color: #e0b0b8;
+}
+.boot-cursor::after {
+  content: '▮';
+  color: #d04070;
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+}
+.boot-status-online {
+  color: #e85090;
+}
+
+/* --- Responsive: individual panel sizing at tablet/laptop --- */
+
+@media (max-width: 1439px) and (min-width: 1024px) {
+  .panel-ide {
+    width: 220px !important;
+    height: 300px !important;
+  }
+  .panel-copland_login {
+    width: 400px !important;
+    height: 443px !important;
+  }
+  .panel-charmatrix {
+    width: 190px !important;
+    height: 190px !important;
+  }
+  .panel-search {
+    width: 140px !important;
+    height: 65px !important;
+  }
+  .panel-sysinfo {
+    width: 190px !important;
+    height: 206px !important;
+  }
+  .panel-quote_panel {
+    width: 150px !important;
+    height: 59px !important;
+  }
+}
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .panel-ide {
+    width: 160px !important;
+    height: 218px !important;
+  }
+  .panel-copland_login {
+    width: 360px !important;
+    height: 399px !important;
+  }
+  .panel-charmatrix {
+    width: 150px !important;
+    height: 150px !important;
+  }
+  .panel-search {
+    width: 110px !important;
+    height: 51px !important;
+  }
+  .panel-sysinfo {
+    width: 150px !important;
+    height: 163px !important;
+  }
+  .panel-quote_panel {
+    width: 120px !important;
+    height: 47px !important;
+  }
+  .copland-art {
+    transform: scale(0.88);
+    transform-origin: center top;
+  }
+}
+
+/* --- Mobile: login only, scaled to fit --- */
+
+@media (max-width: 767px) {
+  .wired-panels-host {
+    transform: scale(0.55);
+  }
+  .panel:not(.login-panel) {
+    display: none !important;
+  }
+}
+
+@media (max-width: 399px) {
+  .wired-panels-host {
+    transform: scale(0.48);
+  }
+}
