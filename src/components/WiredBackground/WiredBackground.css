@@ -228,64 +228,22 @@
   color: #e85090;
 }
 
-/* --- Responsive: individual panel sizing at tablet/laptop --- */
+/* --- Responsive: per-panel transform-origins for edge-anchored scaling --- */
+.panel-ide { transform-origin: left top; }
+.panel-charmatrix { transform-origin: right top; }
+.panel-search { transform-origin: left top; }
+.panel-sysinfo { transform-origin: right top; }
+.panel-quote_panel { transform-origin: left top; }
+.panel-copland_login { transform-origin: center center; }
 
-@media (max-width: 1439px) and (min-width: 1024px) {
-  .panel-ide {
-    width: 220px !important;
-    height: 300px !important;
-  }
-  .panel-copland_login {
-    width: 400px !important;
-    height: 443px !important;
-  }
-  .panel-charmatrix {
-    width: 190px !important;
-    height: 190px !important;
-  }
-  .panel-search {
-    width: 140px !important;
-    height: 65px !important;
-  }
-  .panel-sysinfo {
-    width: 190px !important;
-    height: 206px !important;
-  }
-  .panel-quote_panel {
-    width: 150px !important;
-    height: 59px !important;
-  }
+@media (max-width: 1499px) and (min-width: 1100px) {
+  .panel { scale: 0.75; }
+  .panel-copland_login { scale: 1; --panel-scale: 0.85; }
 }
 
-@media (max-width: 1023px) and (min-width: 768px) {
-  .panel-ide {
-    width: 160px !important;
-    height: 218px !important;
-  }
-  .panel-copland_login {
-    width: 360px !important;
-    height: 399px !important;
-  }
-  .panel-charmatrix {
-    width: 150px !important;
-    height: 150px !important;
-  }
-  .panel-search {
-    width: 110px !important;
-    height: 51px !important;
-  }
-  .panel-sysinfo {
-    width: 150px !important;
-    height: 163px !important;
-  }
-  .panel-quote_panel {
-    width: 120px !important;
-    height: 47px !important;
-  }
-  .copland-art {
-    transform: scale(0.88);
-    transform-origin: center top;
-  }
+@media (max-width: 1099px) and (min-width: 768px) {
+  .panel { scale: 0.55; }
+  .panel-copland_login { scale: 1; --panel-scale: 0.65; }
 }
 
 /* --- Mobile: login only, scaled to fit --- */

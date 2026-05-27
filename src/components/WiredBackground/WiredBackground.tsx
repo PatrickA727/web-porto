@@ -132,7 +132,11 @@ export default function WiredBackground() {
 
       window.setTimeout(() => {
         div.classList.add('visible');
-        if (cfg.transform) div.style.transform = cfg.transform;
+        if (cfg.type === 'copland_login') {
+          div.style.transform = cfg.transform + ' scale(var(--panel-scale, 1))';
+        } else if (cfg.transform) {
+          div.style.transform = cfg.transform;
+        }
       }, 30);
 
       const entry: ActivePanel = { div };
