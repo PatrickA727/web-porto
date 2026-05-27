@@ -98,7 +98,7 @@ export const BOOT_LINES: BootLine[] = [
   { type: 'prompt', text: '> Identifying user...', delay: 200 },
   { type: 'kv', key: 'Identity', value: 'Patrick', delay: 120 },
   { type: 'kv', key: 'Role', value: 'Software Engineer', delay: 120 },
-  { type: 'kv', key: 'Node', value: '192.168.1.42', delay: 100 },
+  { type: 'kv', key: 'Password', value: '**********', delay: 100 },
   { type: 'status', text: 'ONLINE', delay: 100 },
 ];
 

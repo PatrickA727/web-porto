@@ -66,7 +66,7 @@ export function flickerGrid(grid: MatrixGrid): void {
 export function buildSysInfo(): string {
   return `<span class="sysinfo" style="color:#c04070; font-size:12px; letter-spacing:1px;">▓ SYSTEM</span>
 <span class="sysinfo">
-<span class="k">⌂ Host Entity</span>    <span class="v">~ jarvis.wired</span>
+<span class="k">⌂ Host Entity</span>    <span class="v">~ lain.wired</span>
 <span class="k">▣ Main Processor</span> <span class="v">~ AMD Ryzen 9 7900X</span>
 <span class="k">◈ Visual Unit</span>    <span class="v">~ RTX 4070 Ti</span>
 <span class="k">⊙ Core Protocol</span>  <span class="v">~ Arch Linux x86_64</span>
@@ -75,10 +75,10 @@ export function buildSysInfo(): string {
 <span class="k">⌬ Persistent</span>     <span class="v">~ 412G / 1T</span>
 <span class="k">▦ Module Count</span>   <span class="v">~ 1247 (pacman)</span>
 <span class="k">▷ Command Iface</span>  <span class="v">~ /bin/zsh</span>
-<span class="k">⌚ Uptime Synch</span>   <span class="v">~ 4h 12m</span>
+<span class="k">⊙ Uptime Synch</span>   <span class="v">~ 4h 12m</span>
 <span class="k">◉ WIRED</span>
 <span class="k">⌖ Local IP Node</span>  <span class="v">~ 192.168.1.42</span>
-<span class="k">▼ Active Profile</span> <span class="v">~ jarvis</span>
+<span class="k">▼ Active Profile</span> <span class="v">~ lain</span>
 </span>`;
 }
 

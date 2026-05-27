@@ -8,8 +8,8 @@
   background: linear-gradient(
     to bottom,
     transparent 0%,
-    rgba(8, 4, 10, 0.5) 40%,
-    rgba(8, 4, 10, 0.7) 100%
+    rgba(8, 4, 10, 0.6) 10%,
+    rgba(8, 4, 10, 0.8) 100%
   );
 }
 
@@ -35,6 +35,13 @@
 .section-body {
   font-family: 'Courier New', 'Consolas', monospace;
   font-size: 14px;
+  line-height: 1.8;
+  color: #c89098;
+}
+
+/* --- Body text --- */
+.section-header {
+  font-family: 'Courier New', 'Consolas', monospace;
   line-height: 1.8;
   color: #c89098;
 }
