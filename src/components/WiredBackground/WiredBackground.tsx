@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { createNoiseField } from './noise';
+
 import {
   PANEL_CONFIGS,
   MIN_PANELS,
   MAX_PANELS,
   type PanelConfig,
 } from './panels';
+
 import {
   drawNoiseFrame,
   initMatrixGrid,
@@ -19,6 +21,7 @@ import {
   buildCoplandLogin,
   type MatrixGrid,
 } from './content';
+
 import { runBootSequence } from './boot';
 import './WiredBackground.css';
 
@@ -40,7 +43,6 @@ export default function WiredBackground() {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
-    // --- background canvas ---
     const wrap = canvas.parentElement as HTMLElement;
     const resize = () => {
       canvas.width = wrap.clientWidth;
@@ -59,7 +61,6 @@ export default function WiredBackground() {
     };
     loop();
 
-    // --- panel system ---
     const activePanels = new Map<PanelConfig, ActivePanel>();
 
     function buildContent(cfg: PanelConfig): {
@@ -159,7 +160,6 @@ export default function WiredBackground() {
 
       activePanels.set(cfg, entry);
 
-      // Persistent panels never despawn.
       if (cfg.persistent) return;
 
       entry.despawnTimer = window.setTimeout(() => {
@@ -222,9 +222,11 @@ export default function WiredBackground() {
   }, []);
 
   return (
-    <div className="wired-fullscreen">
-      <canvas ref={canvasRef} className="wired-noise-bg" />
+    <>
+      <div className="wired-noise-fixed">
+        <canvas ref={canvasRef} className="wired-noise-bg" />
+      </div>
       <div ref={hostRef} className="wired-panels-host" />
-    </div>
+    </>
   );
 }

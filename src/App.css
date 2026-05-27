@@ -1,0 +1,137 @@
+/*
+ * Content section styling — extends the terminal/panel visual language
+ * from WiredBackground into the scrollable page content.
+ */
+
+/* --- Scroll fade overlay --- */
+.content-fade {
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(8, 4, 10, 0.5) 40%,
+    rgba(8, 4, 10, 0.7) 100%
+  );
+}
+
+/* --- Section headings (navi:// style) --- */
+.section-heading {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #d04070;
+}
+
+.section-heading .prompt {
+  color: #c04070;
+  margin-right: 4px;
+}
+
+.section-divider {
+  border-top: 1px dashed rgba(192, 64, 112, 0.35);
+  margin: 12px 0 28px;
+}
+
+/* --- Body text --- */
+.section-body {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #c89098;
+}
+
+/* --- Terminal cards (content panels matching floating panel style) --- */
+.terminal-card {
+  position: relative;
+  background: rgba(8, 3, 8, 0.86);
+  border: 1px solid rgba(170, 40, 80, 0.45);
+  padding: 24px 28px;
+  font-family: 'Courier New', 'Consolas', monospace;
+  box-shadow:
+    inset 0 0 30px rgba(110, 20, 50, 0.15),
+    0 0 12px rgba(150, 30, 70, 0.08);
+}
+
+/* --- Key-value grid (identity, contact) --- */
+.kv-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 24px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.kv-key {
+  color: #d04070;
+  white-space: nowrap;
+}
+
+.kv-key::after {
+  content: ' :';
+}
+
+.kv-val {
+  color: #e0b0b8;
+}
+
+.kv-online {
+  color: #e85090;
+}
+
+.kv-link {
+  color: #e0b0b8;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.kv-link:hover {
+  color: #d04070;
+}
+
+/* --- Project grid --- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  padding: 20px 24px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  border-color: rgba(208, 64, 112, 0.65);
+  box-shadow:
+    inset 0 0 30px rgba(110, 20, 50, 0.15),
+    0 0 20px rgba(208, 64, 112, 0.15);
+}
+
+.project-title {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 16px;
+  color: #e0b0b8;
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.project-desc {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #c89098;
+  margin-bottom: 16px;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-size: 11px;
+}
+
+.project-tech span {
+  color: #c04070;
+  border: 1px solid rgba(192, 64, 112, 0.3);
+  padding: 2px 8px;
+}

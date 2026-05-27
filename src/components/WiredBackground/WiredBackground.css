@@ -5,15 +5,15 @@
  * unreadable wall of arbitrary-value classes otherwise.
  */
 
-.wired-fullscreen {
+/* Fixed noise canvas — site-wide background texture */
+.wired-noise-fixed {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   background: #08040a;
-  font-family: 'Courier New', 'Consolas', monospace;
-  z-index: -1; /* sits behind page content */
+  z-index: -1;
 }
 
 .wired-noise-bg {
@@ -24,9 +24,17 @@
   display: block;
 }
 
+/* Panels layer — scrolls with the page, only visible in the hero */
 .wired-panels-host {
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  font-family: 'Courier New', 'Consolas', monospace;
+  z-index: 1;
   transform-origin: center center;
   transition: transform 0.3s ease;
 }
