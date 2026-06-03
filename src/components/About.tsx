@@ -20,19 +20,19 @@ export default function About() {
         that piqued my interest at that time. 
       </p>
 
-      {/* <div className="terminal-card">
-        <div className="corner-tag">identity</div>
+      <div className="terminal-card">
+        <div className="corner-tag">sys://stack</div>
         <div className="kv-grid">
-          <span className="kv-key">Identity</span>
-          <span className="kv-val">Patrick</span>
-          <span className="kv-key">Role</span>
-          <span className="kv-val">Software Engineer</span>
-          <span className="kv-key">Focus</span>
-          <span className="kv-val">Full-Stack &middot; Systems &middot; UI</span>
-          <span className="kv-key">Status</span>
-          <span className="kv-val kv-online">AVAILABLE</span>
+          <span className="kv-key">Languages</span>
+          <span className="kv-val">JS/TS, Go, Python, Java</span>
+          <span className="kv-key">Databases</span>
+          <span className="kv-val">PostgreSQL, MongoDB, MySQL, Firebase</span>
+          <span className="kv-key">Deploy</span>
+          <span className="kv-val">Docker, NGINX, Caddy, GitHub Actions</span>
+          <span className="kv-key">VCS</span>
+          <span className="kv-val">GitHub, GitLab, SVN</span>
         </div>
-      </div> */}
+      </div>
     </section>
   );
 }
