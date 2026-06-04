@@ -3,6 +3,34 @@
  * from WiredBackground into the scrollable page content.
  */
 
+/* --- Terminal-aesthetic scrollbar (applied site-wide) --- */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(192, 64, 112, 0.45) rgba(20, 8, 18, 0.35);
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(20, 8, 18, 0.35);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(192, 64, 112, 0.45);
+  border: 1px solid rgba(170, 40, 80, 0.35);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(208, 64, 112, 0.7);
+}
+
+*::-webkit-scrollbar-corner {
+  background: rgba(20, 8, 18, 0.35);
+}
+
 /* --- Scroll fade overlay --- */
 .content-fade {
   background: linear-gradient(
@@ -104,13 +132,20 @@
 .project-card {
   padding: 20px 24px;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
-.project-card:hover {
+.project-card:hover,
+.project-card:focus-visible {
   border-color: rgba(208, 64, 112, 0.65);
   box-shadow:
     inset 0 0 30px rgba(110, 20, 50, 0.15),
     0 0 20px rgba(208, 64, 112, 0.15);
+  outline: none;
 }
 
 .project-title {
@@ -141,4 +176,170 @@
   color: #c04070;
   border: 1px solid rgba(192, 64, 112, 0.3);
   padding: 2px 8px;
+}
+
+/* --- Project modal --- */
+@keyframes modal-backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-window-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 2, 6, 0.72);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  animation: modal-backdrop-in 150ms ease-out;
+}
+
+.modal-window {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: rgba(8, 3, 8, 0.96);
+  border: 1px solid rgba(170, 40, 80, 0.55);
+  box-shadow:
+    inset 0 0 40px rgba(110, 20, 50, 0.18),
+    0 0 30px rgba(150, 30, 70, 0.25);
+  font-family: 'Courier New', 'Consolas', monospace;
+  animation: modal-window-in 150ms ease-out;
+}
+
+.modal-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background: rgba(40, 10, 24, 0.85);
+  border-bottom: 1px solid rgba(170, 40, 80, 0.45);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.modal-titlebar-text {
+  color: #d04070;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  color: #c89098;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 0 4px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: color 0.15s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus-visible {
+  color: #e85090;
+  outline: none;
+}
+
+.modal-body {
+  padding: 24px 28px 28px;
+  overflow-y: auto;
+  color: #c89098;
+}
+
+.modal-title {
+  font-size: 23px;
+  color: #e0b0b8;
+  margin-bottom: 2px;
+}
+
+.modal-meta-year {
+  font-size: 13px;
+  color: #c04070;
+  margin-bottom: 18px;
+}
+
+.modal-description {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #c89098;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+.modal-tech {
+  margin-bottom: 22px;
+}
+
+.modal-tech span {
+  font-size: 12px;
+  padding: 3px 10px;
+}
+
+.modal-links-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 12px 0 22px;
+  border-top: 1px dashed rgba(192, 64, 112, 0.25);
+  border-bottom: 1px dashed rgba(192, 64, 112, 0.25);
+  margin-bottom: 22px;
+}
+
+.modal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e0b0b8;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.modal-link:hover {
+  color: #e85090;
+}
+
+.modal-link svg {
+  flex-shrink: 0;
+}
+
+.modal-screenshots {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-screenshot {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(170, 40, 80, 0.35);
+}
+
+@media (max-width: 767px) {
+  .modal-backdrop {
+    padding: 16px;
+  }
+  .modal-window {
+    max-height: calc(100vh - 32px);
+  }
+  .modal-body {
+    padding: 18px 18px 22px;
+  }
+  .modal-title {
+    font-size: 19px;
+  }
 }
