@@ -16,18 +16,24 @@ export type Project = {
 
 const projects: Project[] = [
   {
-    slug: 'project-one',
-    title: 'Project Name',
-    year: '2024',
+    slug: 'notegarden',
+    title: 'Notegarden',
+    year: '2026',
     shortDescription:
-      'Brief description of what this project does and why it matters. Replace with real content.',
+      'A guitar notes memorization app that utilizes an adaptive learning algorithm and 4 learning modes.',
     longDescription:
-      'Longer write-up about the project — the problem it solves, what you built, the architectural decisions, and anything notable about the implementation. Replace with real content.',
-    tech: ['React', 'TypeScript', 'Node.js'],
+      'A guitar notes memorization app that utilizes an adaptive learning algorithm and 4 different learning modes to help users efficiently memorize the positions of notes on the guitar fretboard.',
+    tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Caddy'],
     images: [
-      '/projects/project-one/copland_og.png',
-      '/projects/project-one/copland_rice.png',
+      '/projects/notegarden/notegarden_home.png',
+      '/projects/notegarden/notegarden_modes.png',
+      '/projects/notegarden/notegarden_recog.png',
+      '/projects/notegarden/notegarden_locate.png',
+      '/projects/notegarden/notegarden_sweep.png',
+      '/projects/notegarden/notegarden_collect.png',
     ],
+    repo: 'https://github.com/PatrickA727/Notegarden',
+    liveUrl: 'https://notegardenmusic.com/',
   },
   {
     slug: 'project-two',

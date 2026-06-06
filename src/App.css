@@ -275,7 +275,7 @@
   font-size: 15px;
   line-height: 1.8;
   color: #c89098;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   white-space: pre-line;
 }
 
@@ -291,11 +291,8 @@
 .modal-links-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
-  padding: 12px 0 22px;
-  border-top: 1px dashed rgba(192, 64, 112, 0.25);
-  border-bottom: 1px dashed rgba(192, 64, 112, 0.25);
-  margin-bottom: 22px;
+  gap: 28px;
+  margin-bottom: 24px;
 }
 
 .modal-link {

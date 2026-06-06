@@ -69,12 +69,6 @@ export default function ProjectModal({ project, onClose }: Props) {
 
           <p className="modal-description">{project.longDescription}</p>
 
-          <div className="project-tech modal-tech">
-            {project.tech.map((t) => (
-              <span key={t}>{t}</span>
-            ))}
-          </div>
-
           {(project.repo || project.liveUrl) && (
             <div className="modal-links-row">
               {project.repo && (
@@ -85,7 +79,7 @@ export default function ProjectModal({ project, onClose }: Props) {
                   className="modal-link"
                 >
                   <GitHubIcon />
-                  <span>{project.repo.replace(/^https?:\/\//, '')}</span>
+                  <span>Source code</span>
                 </a>
               )}
               {project.liveUrl && (
@@ -96,11 +90,17 @@ export default function ProjectModal({ project, onClose }: Props) {
                   className="modal-link"
                 >
                   <ExternalIcon />
-                  <span>{project.liveUrl.replace(/^https?:\/\//, '')}</span>
+                  <span>Live demo</span>
                 </a>
               )}
             </div>
           )}
+
+          <div className="project-tech modal-tech">
+            {project.tech.map((t) => (
+              <span key={t}>{t}</span>
+            ))}
+          </div>
 
           {project.images.length > 0 && (
             <div className="modal-screenshots">

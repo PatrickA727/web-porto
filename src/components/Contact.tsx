@@ -7,7 +7,7 @@ export default function Contact() {
       <div className="section-divider" />
 
       <p className="section-body mb-8">
-        Open to opportunities, collaborations, or just talking shop.
+        Always open to opportunities, collaborations, or just open discussions.
       </p>
 
       <div className="terminal-card">
@@ -18,9 +18,23 @@ export default function Contact() {
             patrick.a7787@gmail.com
           </a>
           <span className="kv-key">GitHub</span>
-          <a href="#" className="kv-val kv-link">github.com/username</a>
+          <a
+            href="https://github.com/PatrickA727"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="kv-val kv-link"
+          >
+            github.com/PatrickA727
+          </a>
           <span className="kv-key">LinkedIn</span>
-          <a href="#" className="kv-val kv-link">linkedin.com/in/username</a>
+          <a
+            href="https://linkedin.com/in/patrick-arthur-sahalaraja-0b1330237"
+            target="_blank"
+            rel="noreferrer noopener"
+            className="kv-val kv-link"
+          >
+            linkedin.com/in/patrick-arthur-sahalaraja-0b1330237
+          </a>
         </div>
       </div>
     </section>

@@ -24,10 +24,10 @@ export default function About() {
         <div className="corner-tag">sys://stack</div>
         <div className="kv-grid">
           <span className="kv-key">Languages</span>
-          <span className="kv-val">JS/TS, Go, Python, Java</span>
+          <span className="kv-val">JS/TS, Go, Python, Java, Dart/Flutter</span>
           <span className="kv-key">Databases</span>
           <span className="kv-val">PostgreSQL, MongoDB, MySQL, Firebase</span>
-          <span className="kv-key">Deploy</span>
+          <span className="kv-key">Infra</span>
           <span className="kv-val">Docker, NGINX, Caddy, GitHub Actions</span>
           <span className="kv-key">VCS</span>
           <span className="kv-val">GitHub, GitLab, SVN</span>
