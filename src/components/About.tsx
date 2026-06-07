@@ -16,21 +16,26 @@ export default function About() {
       </p>
 
       <p className="section-body mb-8">
+        I am a computer engineering graduate which means i have also tinkered in embedded systems and IoT projects, utilizing microcontrollers such as the ESP32, Arduino series, and other electrical components to 
+        build IoT based solutions.
+      </p>
+
+      {/* <p className="section-body mb-8">
         In my free time, I love exploring new technologies and creating personal projects of subjects i am interested in such as music or other fields 
         that piqued my interest at that time. 
-      </p>
+      </p> */}
 
       <div className="terminal-card">
         <div className="corner-tag">sys://stack</div>
         <div className="kv-grid">
           <span className="kv-key">Languages</span>
-          <span className="kv-val">JS/TS, Go, Python, Java, Dart/Flutter</span>
+          <span className="kv-val">JS/TS, Go, Python, Java, Dart, C/C++</span>
           <span className="kv-key">Databases</span>
           <span className="kv-val">PostgreSQL, MongoDB, MySQL, Firebase</span>
           <span className="kv-key">Infra</span>
           <span className="kv-val">Docker, NGINX, Caddy, GitHub Actions</span>
-          <span className="kv-key">VCS</span>
-          <span className="kv-val">GitHub, GitLab, SVN</span>
+          <span className="kv-key">Frameworks</span>
+          <span className="kv-val">Next, Gin, Express, Springboot, FastAPI, Flutter, and more...</span>
         </div>
       </div>
     </section>

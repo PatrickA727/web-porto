@@ -277,6 +277,8 @@
   color: #c89098;
   margin-bottom: 18px;
   white-space: pre-line;
+  text-align: justify;
+  hyphens: auto;
 }
 
 .modal-tech {
@@ -298,15 +300,24 @@
 .modal-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 10px 18px;
   font-size: 14px;
+  letter-spacing: 0.3px;
   color: #e0b0b8;
   text-decoration: none;
-  transition: color 0.15s ease;
+  background: rgba(20, 8, 18, 0.55);
+  border: 1px solid rgba(170, 40, 80, 0.5);
+  transition: color 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
 }
 
-.modal-link:hover {
+.modal-link:hover,
+.modal-link:focus-visible {
   color: #e85090;
+  border-color: rgba(208, 64, 112, 0.85);
+  background: rgba(40, 10, 24, 0.7);
+  box-shadow: 0 0 12px rgba(208, 64, 112, 0.2);
+  outline: none;
 }
 
 .modal-link svg {

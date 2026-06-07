@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
+export type RepoLink = { url: string; label?: string };
+
 export type Project = {
   slug: string;
   title: string;
@@ -10,7 +12,7 @@ export type Project = {
   longDescription: string;
   tech: string[];
   images: string[];
-  repo?: string;
+  repos?: RepoLink[];
   liveUrl?: string;
 };
 
@@ -20,9 +22,9 @@ const projects: Project[] = [
     title: 'Notegarden',
     year: '2026',
     shortDescription:
-      'A guitar notes memorization app that utilizes an adaptive learning algorithm and 4 learning modes.',
+      'A guitar notes memorization app with an adaptive learning algorithm and 4 learning modes.',
     longDescription:
-      'A guitar notes memorization app that utilizes an adaptive learning algorithm and 4 different learning modes to help users efficiently memorize the positions of notes on the guitar fretboard.',
+      'A guitar notes memorization app that utilizes an adaptive learning algorithm and 4 different learning modes to help users efficiently memorize the positions of notes on the guitar fretboard. This was a passion project of mine that i built to help me learn and memorize every note on the fretboard, the adaptive algorithm was heavily inspired by the algorithm used by keybr.com which focuses on letter combinations, in my case i adapted it to focus on fret and string combinations.',
     tech: ['Next.js', 'TypeScript', 'PostgreSQL', 'Docker', 'Caddy'],
     images: [
       '/projects/notegarden/notegarden_home.png',
@@ -32,19 +34,30 @@ const projects: Project[] = [
       '/projects/notegarden/notegarden_sweep.png',
       '/projects/notegarden/notegarden_collect.png',
     ],
-    repo: 'https://github.com/PatrickA727/Notegarden',
+    repos: [{ url: 'https://github.com/PatrickA727/Notegarden' }],
     liveUrl: 'https://notegardenmusic.com/',
   },
   {
-    slug: 'project-two',
-    title: 'Project Name',
-    year: '2024',
+    slug: 'inventory-management',
+    title: 'Inventory Management System',
+    year: '2025',
     shortDescription:
-      'Brief description of what this project does and why it matters. Replace with real content.',
+      'An end to end inventory management system for an online shop selling networking components.',
     longDescription:
-      'Longer write-up about the project — the problem it solves, what you built, the architectural decisions, and anything notable about the implementation. Replace with real content.',
-    tech: ['Python', 'PostgreSQL', 'Docker'],
-    images: [],
+      `An end to end inventory solution for an online shop that sells networking components, it includes a web app for managing inventory, invoices, and products, it also includes a QR and RFID scanner hooked together with an ESP32 for retrieving product information which will be transmitted to the mobile app via bluetooth.
+      This was quite a big project with 2 applications and a custom hardware solution which i worked on with a single colleague, and it was also used for my final year project in university.`,
+    tech: ['React.js', 'Golang', 'PostgreSQL', 'ESP32', 'Flutter', 'Docker', 'Nginx'],
+    images: [
+      '/projects/inventory_mgmt/login.png',
+      '/projects/inventory_mgmt/main.png',
+      '/projects/inventory_mgmt/serialnum.png',
+      '/projects/inventory_mgmt/mobile.png',
+      '/projects/inventory_mgmt/schematic.jpg',
+    ],
+    repos: [
+      { url: 'https://github.com/PatrickA727/RFID-mikrotik-db', label: 'Backend code' },
+      { url: 'https://github.com/PatrickA727/flutter_inventory', label: 'Mobile app' }
+    ],
   },
   {
     slug: 'project-three',

@@ -69,19 +69,20 @@ export default function ProjectModal({ project, onClose }: Props) {
 
           <p className="modal-description">{project.longDescription}</p>
 
-          {(project.repo || project.liveUrl) && (
+          {((project.repos && project.repos.length > 0) || project.liveUrl) && (
             <div className="modal-links-row">
-              {project.repo && (
+              {project.repos?.map((r) => (
                 <a
-                  href={project.repo}
+                  key={r.url}
+                  href={r.url}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="modal-link"
                 >
                   <GitHubIcon />
-                  <span>Source code</span>
+                  <span>{r.label ?? 'Source code'}</span>
                 </a>
-              )}
+              ))}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
