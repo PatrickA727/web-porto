@@ -69,7 +69,8 @@ export default function ProjectModal({ project, onClose }: Props) {
 
           <p className="modal-description">{project.longDescription}</p>
 
-          {((project.repos && project.repos.length > 0) || project.liveUrl) && (
+          {((project.repos && project.repos.length > 0) ||
+            (project.liveUrls && project.liveUrls.length > 0)) && (
             <div className="modal-links-row">
               {project.repos?.map((r) => (
                 <a
@@ -83,17 +84,18 @@ export default function ProjectModal({ project, onClose }: Props) {
                   <span>{r.label ?? 'Source code'}</span>
                 </a>
               ))}
-              {project.liveUrl && (
+              {project.liveUrls?.map((l) => (
                 <a
-                  href={project.liveUrl}
+                  key={l.url}
+                  href={l.url}
                   target="_blank"
                   rel="noreferrer noopener"
                   className="modal-link"
                 >
                   <ExternalIcon />
-                  <span>Live demo</span>
+                  <span>{l.label ?? 'Live demo'}</span>
                 </a>
-              )}
+              ))}
             </div>
           )}
 

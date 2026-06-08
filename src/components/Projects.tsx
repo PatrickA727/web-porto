@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-export type RepoLink = { url: string; label?: string };
+export type LinkItem = { url: string; label?: string };
 
 export type Project = {
   slug: string;
@@ -12,8 +12,8 @@ export type Project = {
   longDescription: string;
   tech: string[];
   images: string[];
-  repos?: RepoLink[];
-  liveUrl?: string;
+  repos?: LinkItem[];
+  liveUrls?: LinkItem[];
 };
 
 const projects: Project[] = [
@@ -35,7 +35,7 @@ const projects: Project[] = [
       '/projects/notegarden/notegarden_collect.png',
     ],
     repos: [{ url: 'https://github.com/PatrickA727/Notegarden' }],
-    liveUrl: 'https://notegardenmusic.com/',
+    liveUrls: [{ url: 'https://notegardenmusic.com/' }],
   },
   {
     slug: 'inventory-management',
@@ -45,7 +45,7 @@ const projects: Project[] = [
       'An end to end inventory management system for an online shop selling networking components.',
     longDescription:
       `An end to end inventory solution for an online shop that sells networking components, it includes a web app for managing inventory, invoices, and products, it also includes a QR and RFID scanner hooked together with an ESP32 for retrieving product information which will be transmitted to the mobile app via bluetooth.
-      This was quite a big project with 2 applications and a custom hardware solution which i worked on with a single colleague, and it was also used for my final year project in university.`,
+      This was quite a big project with 2 applications and a custom hardware solution where i worked on the backend and mobile app while my colleague worked on the web frontend and firmware. We worked on the hardware together and decided to use this project as our final year project in university.`,
     tech: ['React.js', 'Golang', 'PostgreSQL', 'ESP32', 'Flutter', 'Docker', 'Nginx'],
     images: [
       '/projects/inventory_mgmt/login.png',
@@ -60,15 +60,23 @@ const projects: Project[] = [
     ],
   },
   {
-    slug: 'project-three',
-    title: 'Project Name',
-    year: '2023',
+    slug: 'university-foundation-website',
+    title: 'Scholarship Foundation Website',
+    year: '2025',
     shortDescription:
-      'Brief description of what this project does and why it matters. Replace with real content.',
+      'Created an admin website and marketing web design for a university scholarship foundation.',
     longDescription:
-      'Longer write-up about the project — the problem it solves, what you built, the architectural decisions, and anything notable about the implementation. Replace with real content.',
-    tech: ['Rust', 'WebAssembly'],
-    images: [],
+      `Designed the inital figma mockups and UI/UX for the marketing website, and developed the backend and database design for the admin dashboard which included features for managing student and alumni information and status. Also worked with S3 compatible object storage to handle file uploads for student and alumni documents and photos. The frontend was developed by a colleague and deployment was a collaborative effort.`,
+    tech: ['React.js', 'Typescript', 'Golang', 'PostgreSQL', 'Docker', 'Nginx', 'Figma'],
+    images: [
+      '/projects/tskt/home.png',
+      '/projects/tskt/admin_login.png',
+      '/projects/tskt/admin_option.png',
+      '/projects/tskt/input.png',
+      '/projects/tskt/preview.png',
+    ],
+    repos: [{ url: 'https://github.com/PatrickA727/trisakti_backend' }],
+    liveUrls: [{ url: 'https://www.figma.com/proto/qLycE1fZ3VcBSZlK3Xj2YU/landing?node-id=3-5&p=f&t=uNH3lVYR9iqYPVpw-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A5', label: 'Figma design' }],
   },
 ];
 
@@ -102,7 +110,7 @@ export default function Projects() {
   const active = openSlug ? projects.find((p) => p.slug === openSlug) ?? null : null;
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-24">
+    <section className="mx-auto max-w-6xl px-6 py-24">
       <h2 className="section-heading">
         <span className="prompt">&gt;</span> data://projects
       </h2>

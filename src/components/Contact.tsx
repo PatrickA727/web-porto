@@ -24,7 +24,7 @@ export default function Contact() {
             rel="noreferrer noopener"
             className="kv-val kv-link"
           >
-            github.com/PatrickA727
+            PatrickA727
           </a>
           <span className="kv-key">LinkedIn</span>
           <a
@@ -33,7 +33,7 @@ export default function Contact() {
             rel="noreferrer noopener"
             className="kv-val kv-link"
           >
-            linkedin.com/in/patrick-arthur-sahalaraja-0b1330237
+            Patrick Arthur Sahalaraja
           </a>
         </div>
       </div>
