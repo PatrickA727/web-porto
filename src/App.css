@@ -33,12 +33,43 @@
 
 /* --- Scroll fade overlay --- */
 .content-fade {
+  /* Fixed-distance ramp so darkening is visible above the image, then settles. */
   background: linear-gradient(
     to bottom,
-    transparent 0%,
-    rgba(8, 4, 10, 0.6) 10%,
-    rgba(8, 4, 10, 0.8) 100%
+    transparent 0,
+    rgba(8, 4, 10, 0.5) 420px,
+    rgba(8, 4, 10, 0.8) 900px,
+    rgba(8, 4, 10, 0.85) 100%
   );
+}
+
+/* --- Interstitial (navi) — Lain beat between hero and content --- */
+.interstitial {
+  position: relative;
+  /* Full-viewport so the image is genuinely centered vertically on screen. */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24px;
+  pointer-events: none;
+}
+
+.interstitial-art {
+  /* Drops the artwork's black field out so Lain floats over the noise. */
+  mix-blend-mode: screen;
+  max-height: 92vh;
+  max-width: 98vw;
+  width: auto;
+  height: auto;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .interstitial-art {
+    max-height: 72vh;
+  }
 }
 
 /* --- Section headings (navi:// style) --- */

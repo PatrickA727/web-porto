@@ -1,4 +1,5 @@
 import WiredBackground from './components/WiredBackground';
+import Interstitial from './components/Interstitial';
 import About from './components/About';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -13,6 +14,7 @@ export default function App() {
         <section className="h-screen" aria-label="Intro" />
 
         <div className="content-fade">
+          <Interstitial />
           <About />
           <Projects />
           <Contact />
