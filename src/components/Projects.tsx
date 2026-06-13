@@ -61,7 +61,7 @@ const projects: Project[] = [
   },
   {
     slug: 'university-foundation-website',
-    title: 'Scholarship Foundation Website',
+    title: 'University Scholarship Website',
     year: '2025',
     shortDescription:
       'Created an admin website and marketing web design for a university scholarship foundation.',
