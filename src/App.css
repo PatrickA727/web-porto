@@ -37,7 +37,7 @@
   background: linear-gradient(
     to bottom,
     transparent 0,
-    rgba(8, 4, 10, 0.5) 420px,
+    rgba(8, 4, 10, 0.5) 150px,
     rgba(8, 4, 10, 0.8) 900px,
     rgba(8, 4, 10, 0.85) 100%
   );
@@ -46,29 +46,44 @@
 /* --- Interstitial (navi) — Lain beat between hero and content --- */
 .interstitial {
   position: relative;
-  /* Full-viewport so the image is genuinely centered vertically on screen. */
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 0 24px;
+  padding-top: 6vh;     
+  padding-bottom: 18vh;
+  padding-left: 24px;
+  padding-right: 24px;
   pointer-events: none;
 }
 
 .interstitial-art {
   /* Drops the artwork's black field out so Lain floats over the noise. */
   mix-blend-mode: screen;
-  max-height: 92vh;
-  max-width: 98vw;
-  width: auto;
-  height: auto;
+  width: 49vw;
+  height: auto;   
+  max-height: 95vh;
   user-select: none;
+}
+
+.interstitial-quote {
+  font-family: 'Courier New', 'Consolas', monospace;
+  font-style: italic;
+  font-size: 16px;
+  letter-spacing: 1.5px;
+  color: #e0b0b8;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(208, 64, 112, 0.45);
+  margin: 8px 0 0;
 }
 
 @media (max-width: 768px) {
   .interstitial-art {
     max-height: 72vh;
+  }
+
+  .interstitial-quote {
+    font-size: 13px;
+    letter-spacing: 1px;
   }
 }
 
