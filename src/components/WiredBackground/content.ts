@@ -152,6 +152,31 @@ export function buildCoplandLogin(): string {
 }
 
 // --- background canvas renderer ---
+//
+// Performance: dots are grouped into a fixed number of intensity buckets so we
+// set `fillStyle` and call `fill()` once per bucket instead of once per dot.
+// This collapses tens of thousands of canvas state changes + path fills per
+// frame down to ~N, with no visible change (alpha/radius are quantized to N
+// levels and dots stay round). The per-cell noise math is unchanged.
+const NOISE_BG = '#08040a';
+const NOISE_SPACING = 5;
+const NOISE_BUCKETS = 8;
+const TWO_PI = Math.PI * 2;
+
+// Precomputed once: representative color + radius for each bucket.
+const bucketColor: string[] = [];
+const bucketRadius: number[] = [];
+for (let b = 0; b < NOISE_BUCKETS; b++) {
+  const intensity = (b + 0.5) / NOISE_BUCKETS;
+  const alpha = Math.min(1, intensity * 1.7) * 0.72;
+  bucketColor[b] = `rgba(150, 30, 65, ${alpha.toFixed(2)})`;
+  bucketRadius[b] = 1 + intensity * 1.3;
+}
+
+// Reused scratch arrays (cleared each frame) so the hot loop allocates nothing.
+const bucketX: number[][] = Array.from({ length: NOISE_BUCKETS }, () => []);
+const bucketY: number[][] = Array.from({ length: NOISE_BUCKETS }, () => []);
+
 export function drawNoiseFrame(
   ctx: CanvasRenderingContext2D,
   field: NoiseField,
@@ -159,23 +184,42 @@ export function drawNoiseFrame(
 ): void {
   const w = ctx.canvas.width;
   const h = ctx.canvas.height;
-  ctx.fillStyle = '#08040a';
+  ctx.fillStyle = NOISE_BG;
   ctx.fillRect(0, 0, w, h);
-  const spacing = 5;
-  for (let x = 0; x < w; x += spacing) {
-    for (let y = 0; y < h; y += spacing) {
+
+  for (let b = 0; b < NOISE_BUCKETS; b++) {
+    bucketX[b].length = 0;
+    bucketY[b].length = 0;
+  }
+
+  for (let x = 0; x < w; x += NOISE_SPACING) {
+    for (let y = 0; y < h; y += NOISE_SPACING) {
       const n1 = field.noise3D(x * 0.011, y * 0.011, t * 0.007);
       const n2 = field.noise3D(x * 0.024 + 100, y * 0.024 + 100, t * 0.011);
       const v = n1 * 0.65 + n2 * 0.35;
       if (v > 0.42) {
         const intensity = (v - 0.42) / 0.58;
-        const alpha = Math.min(1, intensity * 1.7) * 0.72;
-        const radius = 1 + intensity * 1.3;
-        ctx.fillStyle = `rgba(150, 30, 65, ${alpha.toFixed(2)})`;
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
+        let b = (intensity * NOISE_BUCKETS) | 0;
+        if (b >= NOISE_BUCKETS) b = NOISE_BUCKETS - 1;
+        bucketX[b].push(x);
+        bucketY[b].push(y);
       }
     }
+  }
+
+  for (let b = 0; b < NOISE_BUCKETS; b++) {
+    const xs = bucketX[b];
+    if (xs.length === 0) continue;
+    const ys = bucketY[b];
+    const r = bucketRadius[b];
+    ctx.fillStyle = bucketColor[b];
+    ctx.beginPath();
+    for (let i = 0; i < xs.length; i++) {
+      const px = xs[i];
+      const py = ys[i];
+      ctx.moveTo(px + r, py);
+      ctx.arc(px, py, r, 0, TWO_PI);
+    }
+    ctx.fill();
   }
 }

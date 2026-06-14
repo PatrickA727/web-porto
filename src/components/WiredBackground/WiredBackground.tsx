@@ -54,12 +54,39 @@ export default function WiredBackground() {
     const field = createNoiseField();
     let t = 0;
     let rafId = 0;
-    const loop = () => {
-      drawNoiseFrame(ctx, field, t);
-      t++;
-      rafId = requestAnimationFrame(loop);
+
+    // Respect users who opt out of motion: draw one static frame, no loop.
+    const reduceMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)',
+    ).matches;
+
+    // Frame-rate cap: ~30fps while the hero is on screen, ~8fps once scrolled
+    // past it (the noise is mostly hidden behind the content-fade there anyway).
+    const FAST_INTERVAL = 1000 / 30;
+    const SLOW_INTERVAL = 1000 / 8;
+    let targetInterval = FAST_INTERVAL;
+    const onScroll = () => {
+      targetInterval =
+        window.scrollY > window.innerHeight ? SLOW_INTERVAL : FAST_INTERVAL;
     };
-    loop();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    if (reduceMotion) {
+      drawNoiseFrame(ctx, field, t);
+    } else {
+      let last = performance.now();
+      const loop = (now: number) => {
+        rafId = requestAnimationFrame(loop);
+        const elapsed = now - last;
+        if (elapsed < targetInterval) return;
+        last = now;
+        // Advance `t` by elapsed wall-clock time (in 60fps-equivalent steps) so
+        // the drift speed stays constant regardless of the capped frame rate.
+        t += elapsed * 0.06;
+        drawNoiseFrame(ctx, field, t);
+      };
+      rafId = requestAnimationFrame(loop);
+    }
 
     const activePanels = new Map<PanelConfig, ActivePanel>();
 
@@ -209,6 +236,7 @@ export default function WiredBackground() {
     // --- cleanup on unmount ---
     return () => {
       window.removeEventListener('resize', resize);
+      window.removeEventListener('scroll', onScroll);
       cancelAnimationFrame(rafId);
       window.clearInterval(managerId);
       activePanels.forEach((entry) => {
