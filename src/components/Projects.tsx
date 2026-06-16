@@ -86,7 +86,7 @@ const projects: Project[] = [
     shortDescription:
       'Created an offline word and excel document translator utilizing AI translation models that can be run on consumer hardware.',
     longDescription:
-      `Designed the inital figma mockups and UI/UX for the marketing website, and developed the backend and database design for the admin dashboard which included features for managing student and alumni information and status. Also worked with S3 compatible object storage to handle file uploads for student and alumni documents and photos. The frontend was developed by a colleague and deployment was a collaborative effort.`,
+      `An offline document translator that works with word and excel documents, it utilizes the Libre Translate AI translation models that can be run on consumer hardware without the need for an internet connection. it provides the user with 4 language options and supports batch translation of multiple documents at once. This was a project that i built myself during an internship to help translate large amounts classified word and excel documents.`,
     tech: ['React.js', 'Typescript', 'Python', 'FastAPI'],
     images: [
       '/projects/translator/home.webp',
