@@ -78,6 +78,23 @@ const projects: Project[] = [
     repos: [{ url: 'https://github.com/PatrickA727/trisakti_backend' }],
     liveUrls: [{ url: 'https://www.figma.com/proto/qLycE1fZ3VcBSZlK3Xj2YU/landing?node-id=3-5&p=f&t=uNH3lVYR9iqYPVpw-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=3%3A5', label: 'Figma design' }],
   },
+
+    {
+    slug: 'offline-document-translator',
+    title: 'Offline Document Translator',
+    year: '2026',
+    shortDescription:
+      'Created an offline word and excel document translator utilizing AI translation models that can be run on consumer hardware.',
+    longDescription:
+      `Designed the inital figma mockups and UI/UX for the marketing website, and developed the backend and database design for the admin dashboard which included features for managing student and alumni information and status. Also worked with S3 compatible object storage to handle file uploads for student and alumni documents and photos. The frontend was developed by a colleague and deployment was a collaborative effort.`,
+    tech: ['React.js', 'Typescript', 'Python', 'FastAPI'],
+    images: [
+      '/projects/translator/home.webp',
+      '/projects/translator/lang.webp',
+      '/projects/translator/batch-translate.webp',
+      '/projects/translator/finished.webp',
+    ],
+  },
 ];
 
 function parseHash(): string | null {
